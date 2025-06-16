@@ -40,3 +40,82 @@
 .read-the-docs {
   color: #888;
 }
+
+.kudos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.kudos-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #333;
+  
+}
+
+.kudos-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.kudos-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: #646cff;
+}
+
+.kudos-card p {
+  margin: 0 0 1rem 0;
+  color: #888;
+}
+
+.kudos-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+.upvotes {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.view-button {
+  background-color: #646cff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.view-button:hover {
+  background-color: #535bf2;
+}
+
+@media (prefers-color-scheme: light) {
+  .kudos-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .kudos-card h3 {
+    color: #213547;
+  }
+  
+  .kudos-card p {
+    color: #666;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "title": "Team Awesome",
+      "description": "Kudos for our amazing team",
+      "upvotes": 12
+    },
+    {
+      "id": 2,
+      "title": "Project Success",
+      "description": "Celebrating project milestones",
+      "upvotes": 8
+    },
+    {
+      "id": 3,
+      "title": "Innovation Hub",
+      "description": "Recognizing creative ideas",
+      "upvotes": 15
+    },
+    {
+      "id": 4,
+      "title": "Customer Service",
+      "description": "Appreciating great service",
+      "upvotes": 10
+    }
+  ]
+} 
