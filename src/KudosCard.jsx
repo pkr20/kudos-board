@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import Modal from './Modal';
+import { useNavigate } from 'react-router-dom';
 
 export default function KudosCard({ id, title, description, onDelete }) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const navigate = useNavigate();
 
     //takes onDelete from KudosGrid
     const handleDelete = () => {
@@ -12,22 +11,13 @@ export default function KudosCard({ id, title, description, onDelete }) {
     };
 
     return (
-        <>
-            <div className="kudos-card">
-                <h3>{title}</h3>
-                <p>{description}</p>
-                <div className="kudos-card-bottom">
-                    <button className="view-button" onClick={() => setIsModalOpen(true)}>View Board</button>
-                    <button className="delete-button" onClick={handleDelete}>Delete Board</button>
-                </div>
+        <div className="kudos-card">
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <div className="kudos-card-bottom">
+                <button className="view-button" onClick={() => navigate(`/board/${id}`)}>View Board</button>
+                <button className="delete-button" onClick={handleDelete}>Delete Board</button>
             </div>
-
-            <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                <div className="modal-details">
-                    <h2>{title}</h2>
-                    <p>{description}</p>
-                </div>
-            </Modal>
-        </>
+        </div>
     );
 } 
