@@ -6,12 +6,23 @@ import kudosData from './data/kudosBoards.json';
 
 export default function KudosGrid() {
     //this is the data from the json file
-    const [kudosBoards] = useState(kudosData.boards);
+    const [kudosBoards, setKudosBoards] = useState(kudosData.boards);
+
+    //handle delete board 
+    const handleDeleteBoard = (boardId) => {
+        setKudosBoards(prevBoards => prevBoards.filter(board => board.id !== boardId));
+    };
 
     return (
         <div className="kudos-grid">
             {kudosBoards.map((board) => (
-                <KudosCard key={board.id} title={board.title} description={board.description} upvotes={board.upvotes}/>
+                <KudosCard 
+                    key={board.id} 
+                    id={board.id}
+                    title={board.title} 
+                    description={board.description} 
+                    onDelete={handleDeleteBoard}
+                />
             ))}
         </div>
     );
