@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-export default function KudosCard({ id, title, description, onDelete }) {
+export default function KudosCard({ id, title, description, gifUrl, onDelete }) {
     const navigate = useNavigate();
 
     //takes onDelete from KudosGrid
@@ -12,6 +12,9 @@ export default function KudosCard({ id, title, description, onDelete }) {
 
     return (
         <div className="kudos-card">
+            <div className="kudos-card-gif">
+                <img src={gifUrl} alt={`${title} celebration`} />
+            </div>
             <h3>{title}</h3>
             <p>{description}</p>
             <div className="kudos-card-bottom">

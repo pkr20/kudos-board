@@ -20,7 +20,8 @@ export default function KudosGrid() {
                     key={board.id} 
                     id={board.id}
                     title={board.title} 
-                    description={board.description} 
+                    description={board.description}
+                    gifUrl={board.gifUrl}
                     onDelete={handleDeleteBoard}
                 />
             ))}
