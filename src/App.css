@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: #ccabdc;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
