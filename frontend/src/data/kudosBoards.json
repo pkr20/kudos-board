@@ -1,0 +1,46 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "title": "Team Awesome",
+      "description": "Kudos for our amazing team",
+      "upvotes": 12,
+      "gifUrl": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Bpd21tN2RpdGU2eXpoYXdqbXhnbGJoeTVqNXh3bDllczBnYnVvaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oz9ZE2Oo9zRC/giphy.gif"
+    },
+    {
+      "id": 2,
+      "title": "Project Success",
+      "description": "Celebrating project milestones",
+      "upvotes": 8,
+      "gifUrl": "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeW1odjczb25lMXo0aGswMjNkd2ozcG9vbWtrM2ozazliY3M4YnE3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aWANGF6KuLqzMjZEmO/giphy.gif"
+    },
+    {
+      "id": 3,
+      "title": "Innovation Hub",
+      "description": "Recognizing creative ideas",
+      "upvotes": 15,
+      "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXkxZWNucG1kanVvOHAwMzV1aWh5emVyc3VhNzI2eHZxamw3NmlqZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/K52mizrT6zoOF1SKAX/giphy.gif"
+    },
+    {
+      "id": 4,
+      "title": "Customer Service",
+      "description": "Appreciating great service",
+      "upvotes": 10,
+      "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWkweW9md21ieWV1ZXAxMTN3Z3B1YWhiaXZuajdyN2JzZzVlYTc3aCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/lMameLIF8voLu8HxWV/giphy.gif"
+    },
+    {
+      "id": 6,
+      "title": "Innovation Hub",
+      "description": "Recognizing creative ideas",
+      "upvotes": 15,
+      "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXkxZWNucG1kanVvOHAwMzV1aWh5emVyc3VhNzI2eHZxamw3NmlqZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/K52mizrT6zoOF1SKAX/giphy.gif"
+    },
+    {
+      "id": 7,
+      "title": "Customer Service",
+      "description": "Appreciating great service",
+      "upvotes": 10,
+      "gifUrl": "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWkweW9md21ieWV1ZXAxMTN3Z3B1YWhiaXZuajdyN2JzZzVlYTc3aCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/lMameLIF8voLu8HxWV/giphy.gif"
+    }
+  ]
+}
