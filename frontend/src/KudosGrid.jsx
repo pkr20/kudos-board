@@ -12,7 +12,7 @@ export default function KudosGrid({ searchQuery, filter }) {
 
     //fetches from backend API retreiving boards
     useEffect(() => {
-        fetch('http://localhost:3000/api/boards')
+        fetch(`${import.meta.env.VITE_BASE_URL}/api/boards`)
             .then(res => res.json())
             .then(data => {
                 setKudosBoards(data);
@@ -24,7 +24,7 @@ export default function KudosGrid({ searchQuery, filter }) {
             });
     }, []);
 
-    //handle delete board 
+    //handle delete board
     const handleDeleteBoard = (boardId) => {
         setKudosBoards(prevBoards => prevBoards.filter(board => board.id !== boardId));
         // send a DELETE request to the backend here
@@ -54,10 +54,10 @@ export default function KudosGrid({ searchQuery, filter }) {
     return (
         <div className="kudos-grid">
             {filteredBoards.map((board) => (
-                <KudosCard 
-                    key={board.id} 
+                <KudosCard
+                    key={board.id}
                     id={board.id}
-                    title={board.title} 
+                    title={board.title}
                     description={board.description}
                     imgUrl={board.imgUrl}
                     onDelete={handleDeleteBoard}
@@ -65,4 +65,4 @@ export default function KudosGrid({ searchQuery, filter }) {
             ))}
         </div>
     );
-} 
+}

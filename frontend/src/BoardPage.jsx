@@ -8,7 +8,7 @@ export default function BoardPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/boards/${id}/cards`)
+        fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${id}/cards`)
             .then(res => res.json())
             .then(data => {
                 setCards(data);
@@ -22,12 +22,12 @@ export default function BoardPage() {
     };
 
     const handleDelete = async (cardId) => {
-        await fetch(`http://localhost:3000/api/cards/${cardId}`, { method: 'DELETE' });
+        await fetch(`${import.meta.env.VITE_BASE_URL}/api/cards/${cardId}`, { method: 'DELETE' });
         setCards(cards => cards.filter(card => card.id !== cardId));
     };
 
     const handleUpvote = async (cardId) => {
-        const res = await fetch(`http://localhost:3000/api/cards/${cardId}/upvote`, { method: 'PUT' });
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/cards/${cardId}/upvote`, { method: 'PUT' });
         if (res.ok) {
             const updated = await res.json();
             setCards(cards => cards.map(card => card.id === cardId ? updated : card));
@@ -65,4 +65,4 @@ export default function BoardPage() {
             </div>
         </div>
     );
-} 
+}

@@ -43,12 +43,12 @@ Deployed Application (**required**): [Kudos Board Deployed Site](ADD_LINK_HERE)
   - [X] When all text is cleared from the text input field, all boards are displayed in a grid view
 - [X] **View Board**
   - [X] Users can click on a board in the grid view to navigate to a new page containing that board's details.
-- [ ] **Add New Board**
+- [X] **Add New Board**
   - [X] Users can create a new board on the home page.
   - [X] When creating a new board, users can specify the:
     - [X] Title (required)
     - [X] Category (required)
-    - [ ] Author (optional)
+    - [X] Author (optional)
   - [X] Items listed as required above must have a value to succesffuly create a new board.
   - [X] When the board is successfully created, it appears in the grid of boards.
 - [X] **Delete Board**
@@ -57,19 +57,19 @@ Deployed Application (**required**): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 ##### Board Page
 
-- [ ] **Display Cards**
+- [X] **Display Cards**
   - [X] For a given board, the board's page displays a list of all cards for that board in a grid view.
   - [X] For each card should displayed, users can see the card's:
     - [X] Message
-    - [ ] Gif
+    - [X] Gif
     - [X] Number of upvotes
     - [X] Delete button
-- [ ] **Add New Card**
+- [X] **Add New Card**
   - [X] Users can make a new card associated with the current board.
   - [X] To successfully create a new card, users must specify the following:
     - [X] Text message (required).
     - [X] A gif users can search for and select within the form using the [GIPHY API](https://developers.giphy.com/docs/api/) (required).
-  - [ ] Users are given the option to specify the author of the card.
+  - [X] Users are given the option to specify the author of the card.
   - [X] When the new card is successfully created, it appears in the grid of cards.
 - [X] **Upvote Card**
   - [X] Users can upvote a card.

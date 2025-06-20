@@ -19,7 +19,7 @@ function App() {
 
   // fetch boards once on mount
   useEffect(() => {
-    fetch('http://localhost:3000/api/boards')
+    fetch(`${import.meta.env.VITE_BASE_URL}/api/boards`)
       .then(res => res.json())
       .then(data => {
         setBoards(data);

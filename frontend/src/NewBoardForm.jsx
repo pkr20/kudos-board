@@ -32,7 +32,7 @@ export default function NewBoardForm({ onBoardCreated }) {
     };
 
     try {
-      const res = await fetch('http://localhost:3000/api/boards', {
+      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newBoard)
@@ -97,4 +97,4 @@ export default function NewBoardForm({ onBoardCreated }) {
       <button type="submit">Create Board</button>
     </form>
   );
-} 
+}

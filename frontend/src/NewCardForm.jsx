@@ -35,7 +35,7 @@ export default function NewCardForm({ boardId, onCardCreated }) {
       boardId: Number(boardId),
       imgUrl: selectedGif
     };
-    const res = await fetch('http://localhost:3000/api/cards', {
+    const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/cards`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newCard)
