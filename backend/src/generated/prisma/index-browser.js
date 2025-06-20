@@ -122,13 +122,19 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.BoardScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  title: 'title',
+  description: 'description',
+  imgUrl: 'imgUrl',
+  owner: 'owner',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.CardScalarFieldEnum = {
   id: 'id',
+  message: 'message',
+  author: 'author',
+  upvotes: 'upvotes',
   createdAt: 'createdAt',
   boardId: 'boardId'
 };
