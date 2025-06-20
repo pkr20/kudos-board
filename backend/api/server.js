@@ -109,6 +109,7 @@ server.put('/api/boards/:id', async (req, res, next) => {
   }
 });
 
+
 // [DELETE] /api/boards/:id - Delete a board
 server.delete('/api/boards/:id', async (req, res, next) => {
   const id = Number(req.params.id);
@@ -130,6 +131,55 @@ server.delete('/api/boards/:id', async (req, res, next) => {
 
 
 //CARD ENDPOINTS
+
+// [GET] /api/cards - Get all cards
+server.get('/api/cards', async (req, res, next) => {
+  try {
+    const cards = await prisma.card.findMany({ include: { board: true } });
+    res.json(cards);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// [GET] /api/boards/:boardId/cards - Get all cards for a specific board
+server.get('/api/boards/:boardId/cards', async (req, res, next) => {
+  const boardId = Number(req.params.boardId);
+  if (isNaN(boardId)) 
+    return next({ status: 400, message: 'Board ID must be a number' });
+
+  try {
+    const cards = await prisma.card.findMany({ 
+      where: { boardId },
+      include: { board: true }
+    });
+    res.json(cards);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// [GET] /api/cards/:id - Get a card by ID
+server.get('/api/cards/:id', async (req, res, next) => {
+  const id = Number(req.params.id);
+  if (isNaN(id)) 
+    return next({ status: 400, message: 'Card ID must be a number' });
+
+  try {
+    const card = await prisma.card.findUnique({ 
+      where: { id }, 
+      include: { board: true } 
+    });
+    if (card) {
+      res.json(card);
+    } else {
+      next({ status: 404, message: `No card found with ID ${id}` });
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
 
 //[POST] /api/cards -Create a new card
 server.post("/api/cards", async (req, res, next)=>{
