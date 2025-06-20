@@ -24,25 +24,6 @@ server.get('/api/boards', async (req, res, next) => {
   }
 });
 
-// [POST] CREATE a board
-server.post('/api/boards', async (req, res) => {
-     const { title, description, imgUrl, owner } = req.body;
-     if (!title || !owner ){
-      return next({
-        status: 422,
-        message: 'Board "title" and "owner" are required',
-      });
-     }
-    try {
-      const newBoard = await prisma.board.create({
-        data: { title, description, imgUrl, owner }
-      });
-      res.json(newBoard);
-    } catch (err) {
-      next(err); 
-    }
-  });
-
 
 // [GET] /api/boards/:id - Get a board by ID
 server.get('/api/boards/:id', async (req, res, next) => {
@@ -62,21 +43,27 @@ server.get('/api/boards/:id', async (req, res, next) => {
   }
 });
 
-// [POST] /api/boards - edit an existing board
+
+// [POST] CREATE a board
 server.post('/api/boards', async (req, res, next) => {
-  const { name } = req.body;
+     const { title, description, imgUrl, owner } = req.body;
+     if (!title || !owner ){
+      return next({
+        status: 422,
+        message: 'Board "title" and "owner" are required',
+      });
+     }
+    try {
+      const newBoard = await prisma.board.create({
+        data: { title, description, imgUrl, owner }
+      });
+      res.json(newBoard);
+    } catch (err) {
+      next(err); 
+    }
+  });
 
-  if (!name || typeof name !== 'string') {
-    return next({ status: 422, message: 'Board "name" is required and must be a string' });
-  }
 
-  try {
-    const created = await prisma.board.create({ data: { name } });
-    res.status(201).json(created);
-  } catch (err) {
-    next(err);
-  }
-});
 
 // [PUT] /api/boards/:id - Update a board
 
@@ -87,8 +74,8 @@ server.put('/api/boards/:id', async (req, res, next) => {
   if (isNaN(id)) 
     return next({ status: 400, message: 'Board ID must be a number' });
 
-  if (!name || typeof name !== 'string') {
-    return next({ status: 422, message: 'Board "name" is required and must be a string' });
+  if (title !== undefined && (typeof title !== 'string' || title.length === 0)) {
+    return next({ status: 422, message: 'Board "title" must be a string' });
   }
 
   try {
@@ -196,6 +183,26 @@ server.post("/api/cards", async (req, res, next)=>{
     next(err);
   }
 });
+
+//[DELETE] /api/cards/:id - deleting a card
+server.delete("/api/cards/:id", async (req, res, next) => {
+  const id = Number(req.params.id);
+  if (isNaN(id)) 
+    return next({ status: 400, message: 'Card ID must be a number' });
+
+  try {
+    const card = await prisma.card.findUnique({ where: { id } });
+    if (!card) {
+      return next({ status: 404, message: 'Card not found' });
+    }
+
+    await prisma.card.delete({ where: { id } });
+    res.json({ message: `Card with ID ${id} deleted` });
+  } catch (err) {
+    next(err);
+  }
+});
+
 
 // [CATCH-ALL]
 server.use((req, res, next) => {
