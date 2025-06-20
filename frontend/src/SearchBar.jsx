@@ -1,17 +1,16 @@
 import { useState } from 'react';
 
-export default function SearchBar() {
-    const [searchInput, setSearchInput] = useState("");
-
-    // handles search input change
-    const inputChange = (e) => {
-        setSearchInput(e.target.value);
-    }
-
+export default function SearchBar({ searchInput, setSearchInput, setSearchQuery }) {
     // handles form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(searchInput);
+        setSearchQuery(searchInput);
+    }
+
+    // handles clear
+    const handleClear = () => {
+        setSearchInput('');
+        setSearchQuery('');
     }
 
     return (
@@ -20,12 +19,15 @@ export default function SearchBar() {
                 <input
                     type="text"
                     value={searchInput}
-                    onChange={inputChange}
+                    onChange={e => setSearchInput(e.target.value)}
                     placeholder="Search"
                     className="search-input"
                 />
                 <button type="submit" className="search-button">
                     Search
+                </button>
+                <button type="button" onClick={handleClear}>
+                    Clear
                 </button>
             </form>
         </div>
