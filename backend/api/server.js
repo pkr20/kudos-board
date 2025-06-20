@@ -12,6 +12,8 @@ server.use(cors());
 
 server.use(express.json())
 
+
+//BOARD ENDPOINTS
 // [GET] /api/boards - Get all boards
 server.get('/api/boards', async (req, res, next) => {
   try {
@@ -121,6 +123,25 @@ server.delete('/api/boards/:id', async (req, res, next) => {
 
     await prisma.board.delete({ where: { id } });
     res.json({ message: `Board with ID ${id} deleted` });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+//CARD ENDPOINTS
+
+//[POST] /api/cards -Create a new card
+server.post("/api/cards", async (req, res, next)=>{
+  const {message, author, boardId} = req.body 
+  if (!message || !author || !boardId) {
+    return next({ status: 422, message: 'Message, author, and boardId required.'});
+  }
+  try {
+    const created = await prisma.card.create({
+      data: { message, author, boardId: Number(boardId) },
+    });
+    res.status(201).json(created);
   } catch (err) {
     next(err);
   }
