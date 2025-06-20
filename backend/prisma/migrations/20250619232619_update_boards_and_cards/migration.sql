@@ -19,6 +19,7 @@ ADD COLUMN     "description" TEXT NOT NULL,
 ADD COLUMN     "imgUrl" TEXT NOT NULL,
 ADD COLUMN     "owner" TEXT NOT NULL,
 ADD COLUMN     "title" TEXT NOT NULL,
+ADD COLUMN "category" TEXT NOT NULL DEFAULT 'Celebration',
 ALTER COLUMN "updatedAt" DROP DEFAULT;
 
 -- AlterTable

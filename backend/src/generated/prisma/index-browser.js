@@ -127,7 +127,8 @@ exports.Prisma.BoardScalarFieldEnum = {
   imgUrl: 'imgUrl',
   owner: 'owner',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  category: 'category'
 };
 
 exports.Prisma.CardScalarFieldEnum = {
@@ -147,6 +148,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 

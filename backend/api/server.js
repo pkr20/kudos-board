@@ -3,7 +3,7 @@ const express = require('express')
 const server = express()
 
 //prisma
-const {PrismaClient} = require('../src/generated/prisma/client')
+const {PrismaClient} = require('../generated/prisma')
 const prisma = new PrismaClient()
 
 /// Cors stuff
@@ -28,7 +28,7 @@ server.get('/api/boards', async (req, res, next) => {
 // [GET] /api/boards/:id - Get a board by ID
 server.get('/api/boards/:id', async (req, res, next) => {
   const id = Number(req.params.id);
-  if (isNaN(id)) 
+  if (isNaN(id))
     return next({ status: 400, message: 'Board ID must be a number' });
 
   try {
@@ -46,20 +46,20 @@ server.get('/api/boards/:id', async (req, res, next) => {
 
 // [POST] CREATE a board
 server.post('/api/boards', async (req, res, next) => {
-     const { title, description, imgUrl, owner } = req.body;
-     if (!title || !owner ){
+     const { title, description, imgUrl, owner='', category } = req.body;
+     if (!title || !category ){
       return next({
         status: 422,
-        message: 'Board "title" and "owner" are required',
+        message: 'Board "title" and "category" are required',
       });
      }
     try {
       const newBoard = await prisma.board.create({
-        data: { title, description, imgUrl, owner }
+        data: { title, description, imgUrl, owner, category }
       });
       res.json(newBoard);
     } catch (err) {
-      next(err); 
+      next(err);
     }
   });
 
@@ -69,9 +69,9 @@ server.post('/api/boards', async (req, res, next) => {
 
 server.put('/api/boards/:id', async (req, res, next) => {
   const id = Number(req.params.id);
-  const { title, description, imgUrl, owner } = req.body;
+  const { title, description, imgUrl, owner, category } = req.body;
 
-  if (isNaN(id)) 
+  if (isNaN(id))
     return next({ status: 400, message: 'Board ID must be a number' });
 
   if (title !== undefined && (typeof title !== 'string' || title.length === 0)) {
@@ -80,14 +80,14 @@ server.put('/api/boards/:id', async (req, res, next) => {
 
   try {
     const board = await prisma.board.findUnique({ where: { id } });
-    
+
     if (!board) {
       return next({ status: 404, message: `Board with ID ${id} not found` });
     }
 
     const updated = await prisma.board.update({
       where: { id },
-      data: { title, description, imgUrl, owner }
+      data: { title, description, imgUrl, owner, category }
     });
 
     res.json(updated);
@@ -100,7 +100,7 @@ server.put('/api/boards/:id', async (req, res, next) => {
 // [DELETE] /api/boards/:id - Delete a board
 server.delete('/api/boards/:id', async (req, res, next) => {
   const id = Number(req.params.id);
-  if (isNaN(id)) 
+  if (isNaN(id))
     return next({ status: 400, message: 'Board ID must be a number' });
 
   try {
@@ -132,11 +132,11 @@ server.get('/api/cards', async (req, res, next) => {
 // [GET] /api/boards/:boardId/cards - Get all cards for a specific board
 server.get('/api/boards/:boardId/cards', async (req, res, next) => {
   const boardId = Number(req.params.boardId);
-  if (isNaN(boardId)) 
+  if (isNaN(boardId))
     return next({ status: 400, message: 'Board ID must be a number' });
 
   try {
-    const cards = await prisma.card.findMany({ 
+    const cards = await prisma.card.findMany({
       where: { boardId },
       include: { board: true }
     });
@@ -149,13 +149,13 @@ server.get('/api/boards/:boardId/cards', async (req, res, next) => {
 // [GET] /api/cards/:id - Get a card by ID
 server.get('/api/cards/:id', async (req, res, next) => {
   const id = Number(req.params.id);
-  if (isNaN(id)) 
+  if (isNaN(id))
     return next({ status: 400, message: 'Card ID must be a number' });
 
   try {
-    const card = await prisma.card.findUnique({ 
-      where: { id }, 
-      include: { board: true } 
+    const card = await prisma.card.findUnique({
+      where: { id },
+      include: { board: true }
     });
     if (card) {
       res.json(card);
@@ -170,13 +170,14 @@ server.get('/api/cards/:id', async (req, res, next) => {
 
 //[POST] /api/cards -Create a new card
 server.post("/api/cards", async (req, res, next)=>{
-  const {message, author, boardId} = req.body 
-  if (!message || !author || !boardId) {
-    return next({ status: 422, message: 'Message, author, and boardId required.'});
+  const {message, author="", boardId, imgUrl} = req.body
+
+  if (!message || !boardId || !imgUrl) {
+    return next({ status: 422, message: 'Message, author, and boardId, imgUrl required.'});
   }
   try {
     const created = await prisma.card.create({
-      data: { message, author, boardId: Number(boardId) },
+      data: { message, author, boardId: Number(boardId), imgUrl },
     });
     res.status(201).json(created);
   } catch (err) {
@@ -189,7 +190,7 @@ server.post("/api/cards", async (req, res, next)=>{
 //[DELETE] /api/cards/:id - deleting a card
 server.delete("/api/cards/:id", async (req, res, next) => {
   const id = Number(req.params.id);
-  if (isNaN(id)) 
+  if (isNaN(id))
     return next({ status: 400, message: 'Card ID must be a number' });
 
   try {
@@ -228,6 +229,23 @@ server.put("/api/cards/:id", async (req, res, next) => {
       },
     });
     res.json(updatedCard);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// [PUT] /api/cards/:id/upvote - Upvote a card
+server.put('/api/cards/:id/upvote', async (req, res, next) => {
+  const id = Number(req.params.id);
+  if (isNaN(id))
+    return next({ status: 400, message: 'Card ID must be a number' });
+
+  try {
+    const updated = await prisma.card.update({
+      where: { id },
+      data: { upvotes: { increment: 1 } }
+    });
+    res.json(updated);
   } catch (err) {
     next(err);
   }
