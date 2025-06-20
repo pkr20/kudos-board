@@ -1,14 +1,13 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 
 export default function BoardPage() {
     const { id } = useParams();
-    const navigate = useNavigate();
 
     return (
         <div className="board-details">
             <div className="board-header">
-                <button className="back-button" onClick={() => navigate('/')}>← Back</button>
+                <Link className="back-button" to="/">← Back</Link>
                 <h2>Board Details</h2>
             </div>
             <div className="board-content">

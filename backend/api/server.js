@@ -184,6 +184,8 @@ server.post("/api/cards", async (req, res, next)=>{
   }
 });
 
+
+
 //[DELETE] /api/cards/:id - deleting a card
 server.delete("/api/cards/:id", async (req, res, next) => {
   const id = Number(req.params.id);
@@ -203,6 +205,33 @@ server.delete("/api/cards/:id", async (req, res, next) => {
   }
 });
 
+// [PUT] /api/cards/:id - Update a card
+server.put("/api/cards/:id", async (req, res, next) => {
+  const id = Number(req.params.id);
+  const { message, author } = req.body;
+  if (isNaN(id)) {
+    return next({ status: 400, message: "Card id must be a number" });
+  }
+  if (!message && !author) {
+    return next({ status: 422, message: "Message/author is required." });
+  }
+  try {
+    const card = await prisma.card.findUnique({ where: { id } });
+    if (!card) {
+      return next({ status: 404, message: "Card not found" });
+    }
+    const updatedCard = await prisma.card.update({
+      where: { id },
+      data: {
+        message: message !== undefined ? message : card.message,
+        author: author !== undefined ? author : card.author,
+      },
+    });
+    res.json(updatedCard);
+  } catch (err) {
+    next(err);
+  }
+});
 
 // [CATCH-ALL]
 server.use((req, res, next) => {
