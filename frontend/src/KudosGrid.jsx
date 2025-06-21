@@ -25,7 +25,9 @@ export default function KudosGrid({ searchQuery, filter }) {
     }, []);
 
     //handle delete board
-    const handleDeleteBoard = (boardId) => {
+    const handleDeleteBoard = async (boardId) => {
+        await fetch(`${import.meta.env.VITE_BASE_URL}/api/boards/${boardId}`, { method: 'DELETE' })
+
         setKudosBoards(prevBoards => prevBoards.filter(board => board.id !== boardId));
         // send a DELETE request to the backend here
     };
