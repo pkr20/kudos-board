@@ -22,14 +22,14 @@ Deployed Application (**required**): [Kudos Board Deployed Site](ADD_LINK_HERE)
   - [X] For each board displayed, users can see:
     - [X] An image/gif
     - [X] A board title
-- [ ] **Filter Boards**
-  - [ ] Home page includes navigation bar, drop down, or some other mechanism which allows users to filter boards by the following categories:
-    - [ ] All/Home (displays all boards)
-    - [ ] Recent (displays the 6 most recently created boards)
-    - [ ] Celebration
-    - [ ] Thank you
-    - [ ] Inspiration
-  - [ ] When a category is clicked, boards matching the specified category are displayed.
+- [X] **Filter Boards**
+  - [X] Home page includes navigation bar, drop down, or some other mechanism which allows users to filter boards by the following categories:
+    - [X] All/Home (displays all boards)
+    - [X] Recent (displays the 6 most recently created boards)
+    - [X] Celebration
+    - [X] Thank you
+    - [X] Inspiration
+  - [X] When a category is clicked, boards matching the specified category are displayed.
 - [X] **Search Functionality**
   - [X] Users can use a search bar to search for boards by title on the home page.
   - [X] The search bar should include:
@@ -135,7 +135,7 @@ Deployed Application (**required**): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
+https://www.loom.com/share/96213c7b5827477b814f782c4d7ddb0c?sid=f93137a9-c1af-46ae-b818-eb92f5ec4236
 
 `ADD_EMBEDDED_CODE_HERE`
 

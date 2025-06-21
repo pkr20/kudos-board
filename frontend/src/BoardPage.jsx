@@ -47,8 +47,11 @@ export default function BoardPage() {
                 <NewCardForm boardId={id} onCardCreated={handleCardCreated} />
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-                    gap: '1rem'
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                    gap: '2rem',
+                    padding: '2rem 0',
+                    maxWidth: '1200px',
+                    margin: '0 auto'
                 }}>
                     {cards.map(card => (
                         <div key={card.id} >
