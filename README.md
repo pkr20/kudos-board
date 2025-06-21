@@ -2,7 +2,7 @@
 
 Submitted by: **Kayleen Ramirez**
 
-Deployed Application (**required**): [Kudos Board Deployed Site](ADD_LINK_HERE)
+Deployed Application (**required**): [Kudos Board Deployed Site](https://kudos-board-6xwz.onrender.com/)
 
 ### Application Features
 
@@ -146,11 +146,11 @@ Yes they did, but it was hard to deploy and connect the frontend to the backend.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-If I had more time, I would have done the light and dark feature. I think that was cool. I also would have made a library of pictures to choose from in the project for the boards in case the user does not have a link. 
+If I had more time, I would have done the light and dark feature. I think that was cool. I also would have made a library of pictures to choose from in the project for the boards in case the user does not have a link.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-I noticed that my cards were not in a grid when doing my walkthrough so I had to redo it to tweak the CSS to make the cards into a grid. 
+I noticed that my cards were not in a grid when doing my walkthrough so I had to redo it to tweak the CSS to make the cards into a grid.
 
 ### Open-source libraries used
 
