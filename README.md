@@ -79,9 +79,9 @@ Deployed Application (**required**): [Kudos Board Deployed Site](ADD_LINK_HERE)
 - [X] **Delete Card**
   - [X] Users can delete cards.
   - [X] When the user clicks the delete button for a card, the card disappears from the grid of cards.
-- [ ] **Deployment**
-  - [ ] Website is deployed via Render.
-  - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough.
+- [X] **Deployment**
+  - [X] Website is deployed via Render.
+  - [X] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: For ease of grading, please use the deployed version of your website when creating your walkthrough.
 
 ####  Stretch Features
 
@@ -137,21 +137,20 @@ Deployed Application (**required**): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 https://www.loom.com/share/96213c7b5827477b814f782c4d7ddb0c?sid=f93137a9-c1af-46ae-b818-eb92f5ec4236
 
-`ADD_EMBEDDED_CODE_HERE`
 
 ### Reflection
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Yes they did, but it was hard to deploy and connect the frontend to the backend. I had to do a lot of tweaking to make things work and render which was not super easy.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-Add your response here
+If I had more time, I would have done the light and dark feature. I think that was cool. I also would have made a library of pictures to choose from in the project for the boards in case the user does not have a link. 
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I noticed that my cards were not in a grid when doing my walkthrough so I had to redo it to tweak the CSS to make the cards into a grid. 
 
 ### Open-source libraries used
 
@@ -159,4 +158,4 @@ Add your response here
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Thank you so so so so much Elikem and Gabe. I learned so much from their help and I appreciate how they are very willing to. Life savers for the project, thank you!!!
